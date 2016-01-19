@@ -17,7 +17,7 @@
 ---
 * As a focus-group member, I want clear instructions on how to complete the market analysis and some info about what it is for.
 * As a focus-group member, I want the app to be visually appealing.
-* As a focus-group, I want the app to be usable on my mobile device.
+* As a focus-group member, I want the app to be usable on my mobile device.
 
 ---
 * As a developer, I want to use object oriented programming to build this app.
