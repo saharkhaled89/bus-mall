@@ -4,6 +4,9 @@ var productImages = [];
 function Products (productName, filePath) {
     this.productName = productName;
     this.filePath = filePath;
+    timesClicked = 0;
+    timesDisplayed = 0;
+    percentClicked = 0;
     productImages.push(this);
 }
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
@@ -21,15 +24,12 @@ var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
-//create array var alreadyShown = [];
 var imgRandom = function () {
     return Math.floor(Math.random() * productImages.length);
 }
 var imageAppear = function(){
-
     var productImageOne = document.getElementById('imageOne');
     var img1 = imgRandom();
-    //alreadyShown.push(img1);
     productImageOne.src = productImages[img1].filePath;
     var productImageTwo = document.getElementById('imageTwo');
     var img2 = imgRandom();
@@ -49,6 +49,7 @@ imageAppear();
 var firstClick = 0;
 var secondClick = 0;
 var thirdClick = 0;
+var globalTotalClicks = 0;
 
 function handleClick(){
     imageAppear();

@@ -12,6 +12,7 @@ body{
 section {
   margin-left: 4%;
   margin-right: auto;
+  display: flex;
 }
 
 header, h3 {
