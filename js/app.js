@@ -6,7 +6,6 @@ function Products (productName, filePath) {
     this.filePath = filePath;
     productImages.push(this);
 }
-
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
 var boots = new Products('Toe-less Rain Boots', 'img/boots.jpg');
@@ -45,9 +44,14 @@ var imageAppear = function(){
 }
 imageAppear();
 
+var firstClick = 0;
+var secondClick = 0;
+var thirdClick = 0;
+
 function handleClick(){
-  imageAppear();
+    imageAppear();
 }
+
 imageOne.addEventListener('click', handleClick);
 imageTwo.addEventListener('click', handleClick);
 imageThree.addEventListener('click', handleClick);
