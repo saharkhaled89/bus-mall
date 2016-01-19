@@ -4,10 +4,14 @@ var productImages = [];
 function Products (productName, filePath) {
     this.productName = productName;
     this.filePath = filePath;
-    timesClicked = 0;
-    timesDisplayed = 0;
-    percentClicked = 0;
+    // timesClicked = 0;
+    // timesDisplayed = 0;
+    // percentClicked = 0;
+    // this.findPercentClick = function (){
+    //   ((this.timesClicked/this.timesDisplayed)/ this.TotalClicks);
+    // }
     productImages.push(this);
+    // this.findPercentClick();
 }
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
@@ -27,34 +31,58 @@ var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 var imgRandom = function () {
     return Math.floor(Math.random() * productImages.length);
 }
+
+// var alreadyShown = [];
+// var img1 = 0;
+// var img2 =0;
+// var img3 = 0;
 var imageAppear = function(){
     var productImageOne = document.getElementById('imageOne');
+    var productImageTwo = document.getElementById('imageTwo');
+    var productImageThree = document.getElementById('imageThree');
     var img1 = imgRandom();
     productImageOne.src = productImages[img1].filePath;
-    var productImageTwo = document.getElementById('imageTwo');
     var img2 = imgRandom();
     while (img1 === img2) {
         img2 = imgRandom();
     };
     productImageTwo.src = productImages[img2].filePath;
-    var productImageThree = document.getElementById('imageThree');
     var img3 = imgRandom();
     while (img1 === img2 || img2 === img3 || img3 === img1) {
         img3 = imgRandom();
     };
     productImageThree.src = productImages[img3].filePath;
+
 }
 imageAppear();
+var productImageOne = document.getElementById('imageOne');
+var productImageTwo = document.getElementById('imageTwo');
+var productImageThree = document.getElementById('imageThree');
 
 var firstClick = 0;
 var secondClick = 0;
 var thirdClick = 0;
-var globalTotalClicks = 0;
+// var totalClicks = 0;
 
-function handleClick(){
+function handleClickFirst(){
     imageAppear();
-}
+    firstClick++;
+    console.log('First was clicked ' + firstClick + ' times');
+  }
 
-imageOne.addEventListener('click', handleClick);
-imageTwo.addEventListener('click', handleClick);
-imageThree.addEventListener('click', handleClick);
+function handleClickSecond(){
+      imageAppear();
+      secondClick++;
+      console.log('Second was clicked ' + secondClick + ' times');
+    }
+
+function handleClickThird(){
+        imageAppear();
+        thirdClick++;
+        console.log('Third was clicked ' + thirdClick + ' times');
+      }
+
+
+imageOne.addEventListener('click', handleClickFirst);
+imageTwo.addEventListener('click', handleClickSecond);
+imageThree.addEventListener('click', handleClickThird);
