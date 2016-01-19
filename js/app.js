@@ -2,58 +2,10 @@
 var productImages = [];
 
 function Products (productName, filePath) {
-this.productName = productName;
-this.filePath = filePath;
-productImages.push(this);
+    this.productName = productName;
+    this.filePath = filePath;
+    productImages.push(this);
 }
-
-var productRandomizer = function () {
-     return Math.floor(Math.random() * productImages.length);
-}
-
-var imageAppear = function(){
-  var productImageOne = document.getElementById('imageOne');
-    var x = productRandomizer();
-    productImageOne.src = productImages[x].filePath;
-
-  var productImageTwo = document.getElementById('imageTwo');
-    var y = productRandomizer();
-    while (x === y) {
-      y = productRandomizer();
-    };
-    productImageTwo.src = productImages[y].filePath;
-
-    var productImageThree = document.getElementById('imageThree');
-    var z = productRandomizer();
-    while (x === y || y === z || z === x) {
-      z = productRandomizer();
-    };
-    productImageThree.src = productImages[z].filePath;
-}
-
-// var productClickOne = 0;
-// var productClickTwo = 0;
-// var productClickThree = 0;
-// function handleClickOne() {
-//   productClickOne += 1;
-//   imageAppear();
-//   console.log(productImageOne + ' was clicked ' + productClickOne + ' times');
-// }
-// function handleClickTwo() {
-//   productClickTwo += 1;
-//   imageAppear();
-//   console.log(productImageTwo + ' was clicked' + productClickTwo + ' times');
-// }
-// function handleClickThree() {
-//   productClickThree += 1;
-//   imageAppear();
-//   console.log(productImageThree + ' was clicked' + productTwo + ' times');
-// }
-//
-// productImageOne.addEventListener('click', handleClickOne);
-// productImageTwo.addEventListener('click', handleClickTwo);
-// productImageThree.addEventListener('click', handleClickThree);
-
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
@@ -70,4 +22,32 @@ var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
+
+var imgRandom = function () {
+    return Math.floor(Math.random() * productImages.length);
+}
+var imageAppear = function(){
+    var productImageOne = document.getElementById('imageOne');
+    var img1 = imgRandom();
+    productImageOne.src = productImages[img1].filePath;
+    var productImageTwo = document.getElementById('imageTwo');
+    var img2 = imgRandom();
+    while (img1 === img2) {
+        img2 = imgRandom();
+    };
+    productImageTwo.src = productImages[img2].filePath;
+    var productImageThree = document.getElementById('imageThree');
+    var img3 = imgRandom();
+    while (img1 === img2 || img2 === img3 || img3 === img1) {
+        img3 = imgRandom();
+    };
+    productImageThree.src = productImages[img3].filePath;
+}
 imageAppear();
+
+function handleClick(){
+  imageAppear();
+}
+imageOne.addEventListener('click', handleClick);
+imageTwo.addEventListener('click', handleClick);
+imageThree.addEventListener('click', handleClick);
