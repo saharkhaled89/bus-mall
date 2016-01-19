@@ -21,13 +21,15 @@ var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
-
+//create array var alreadyShown = [];
 var imgRandom = function () {
     return Math.floor(Math.random() * productImages.length);
 }
 var imageAppear = function(){
+
     var productImageOne = document.getElementById('imageOne');
     var img1 = imgRandom();
+    //alreadyShown.push(img1);
     productImageOne.src = productImages[img1].filePath;
     var productImageTwo = document.getElementById('imageTwo');
     var img2 = imgRandom();

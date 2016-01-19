@@ -8,3 +8,12 @@ img {
 body{
   background-color: #5298fa;
 }
+
+section {
+  margin-left: 4%;
+  margin-right: auto;
+}
+
+header, h3 {
+  text-align: center;
+}
