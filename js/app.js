@@ -101,7 +101,7 @@ imageThree.addEventListener('click', handleClickThird);
 
 //this function hides the results button until it goes through 5 clicks
 function button() {
-    if(globalClicks < 5) {
+    if(globalClicks < productImages.length) {
         document.getElementById('resultsButton').style.visibility = 'hidden';
     } else {
         document.getElementById('resultsButton').style.visibility = 'visible';
@@ -109,23 +109,37 @@ function button() {
 }
 button();
 
-//Chart psuedocode
-//var productValues = [];
-// var survey = [ { productValues[i] and labels} ]
-//var context= documet.getElementById('results').getContext('2d');
-// var resultsChart = new Chart(context).stuff here(survey, {
-//animation,
-// });
+var data = {
+  labels : ['bag', 'banana','chair', 'cthulu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
+  datasets : [{
+      fillColor : "#48A497",
+			strokeColor : "#48A4D1",
+			data : [],
+      }
+  ]
+}
+var chartHere = document.getElementById('chartHere').getContext('2d');
+new Chart(chartHere).Bar(data);
 
-
+//clicksForChart() gets the click info from the image click handlers
+// var chartArray = [];
+// function clicksForChart() {
+//   var chartArray = [];
+//   for (var i = 0; i < productImages.length; i++){
+//     chartArray.push(productImages[i].clickTotal);
+//   }
+// }
 var resultsButton = document.getElementById('resultsButton');
-function handleButtonClick(){
-    for (var i = 0; i < productImages.length; i++) {
-      // having handler send the data to a <section> for now, needed to test the button functionality / test the percent method
-    document.getElementById('showData').innerHTML += productImages[i].productName + ': out of ' + productImages[i].timesDisplayed + ' displays you clicked ' + productImages[i].clickTotal + ' time(s), which is ' + productImages[i].percent() + '% of the times displayed </br>';
-    // productImages[i].percent();
 
-console.log('the handler met the listener');
-    }
+function handleButtonClick(){
+      for (var i = 0; i < productImages.length; i++) {
+        data.labels[i] = productImages[i].productName;
+        data.datasets[0].data[i] = productImages[i].clickTotal;
+        // data.datasets[0].data[i] = productImages[i].timesDisplayed;
+      // data.datasets[i].data[i] = productImages[i].percent();
+      }
+    console.log('the handler met the listener');
+    var chartHere = document.getElementById('chartHere').getContext('2d');
+    new Chart(chartHere).Bar(data);
 }
  resultsButton.addEventListener('click', handleButtonClick);
