@@ -10,7 +10,7 @@ Marketing Research Team:
 * As the marketing research team, we want an app that displays potential BusMall products to individual focus groups.
 * As the marketing research team, we want the app to display three BusMall products at a time, side-by-side-by-side.
 * As the marketing research team, we want the individual focus-group member to click on the BusMall products they would most likely purchase.
-* As the marketing research team, we want the chosen products stored, calculated, and the data displayed visually.
+* As the marketing research team, we want the chosen products stored, calculated, and the data displayed visually in a bar chart.
 * As the marketing research team, we want to keep the product selection process as untainted as possible by keeping the results hidden from the focus-group member until 15 clicks are made.
 * As the marketing research team, we want a button to appear after 15 clicks are made giving the focus-group member the option to see the results.
 * As the marketing research team, we want the results displayed in a chart.
@@ -33,5 +33,6 @@ Developer:
 * As a developer, I want to make it so that the same product image does not appear more than once in the same grouping of 3 randomized images.
 * As a developer, I want to be sure every product image appears at least once.
 * As a developer, I want to build a button that appears after the focus-group member makes 15 clicks that gives the member the option to view the market analysis results.
+* As a developer, I want to display the product click data in a bar chart using Chart.js
 * As a developer, I want to use CSS to implement a custom font and color pallet, and to create a layout with semantic HTML using Skeleton.
 * As a developer, I want the app to have all the pertinent instructions and labels for the focus-group members and for the product images to appear the same size on a mobile screen.

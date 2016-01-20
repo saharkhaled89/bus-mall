@@ -110,10 +110,21 @@ function button() {
 }
 button();
 
+//Chart psuedocode
+//var productValues = [];
+// var survey = [ { productValues[i] and labels} ]
+//var context= documet.getElementById('results').getContext('2d');
+// var resultsChart = new Chart(context).stuff here(survey, {
+//animation,
+// });
+
+
 var resultsButton = document.getElementById('resultsButton');
 function handleButtonClick(){
     for (var i = 0; i < productImages.length; i++) {
+      // having handler send the data to a <section> for now, needed to test the button functionality / test the percent method
     document.getElementById('showData').innerHTML = productImages[i].percent();
+
 console.log('this point works');
     }
 }
