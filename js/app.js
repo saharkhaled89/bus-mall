@@ -7,12 +7,12 @@ function Products (productName, filePath) {
     this.filePath = filePath;
     this.clickTotal = 0;
     this.timesDisplayed = 0;
-    // this.percentClicked;
-    // this.findPercentClick = function (){
-    //     (this.clickTotal/this.timesDisplayed);
-    // };
+    this.percentClicked;
+    this.findPercentClick = function (){
+        (this.clickTotal/this.timesDisplayed)/this.globalCLicks;
+    };
     productImages.push(this);
-    // this.findPercentClick();
+    this.findPercentClick();
 }
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
@@ -113,8 +113,9 @@ button();
 
 //create an event handler for button
 // function handleButtonClick(){
+//     event.preventDefault();
 //
 // }
-
-//create event listener for the button
+//
+// //create event listener for the button
 // resultsButton.addEventListener('click', handleButtonClick);
