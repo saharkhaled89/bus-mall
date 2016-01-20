@@ -7,27 +7,30 @@ function Products (productName, filePath) {
     this.filePath = filePath;
     this.clickTotal = 0;
     this.timesDisplayed = 0;
-    this.percentClicked;
-    this.findPercentClick = function (){
-        (this.clickTotal/this.timesDisplayed)/this.globalCLicks;
-    };
+    this.percentClicked= 0;
     productImages.push(this);
-    this.findPercentClick();
+
+    // Products.prototype.percent = function() {
+    //     this.percentClicked((this.clickTotal/this.timesDisplayed).toFixed(2) * 100);
+    // };
+    // Products.percent();
 }
+
+
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
 var boots = new Products('Toe-less Rain Boots', 'img/boots.jpg');
 var chair = new Products('Chair', 'img/chair.jpg');
 var cthulu = new Products('Cthulu Toy', 'img/cthulhu.jpg');
 var dragon = new Products('Dragon Meat', 'img/dragon.jpg');
-// var pen = new Products('Untensil Pens', 'img/pen.jpg');
-// var scissors = new Products('Pizza Scissors', 'img/scissors.jpg');
-// var shark = new Products('Shark Sleeping Bag', 'img/shark.jpg');
-// var sweep = new Products('Baby Broom Onesie', 'img/sweep.png');
-// var unicorn = new Products('Unicorn Meat', 'img/unicorn.jpg');
-// var usb = new Products('Tentacle USB', 'img/usb.gif');
-// var waterCan = new Products('Watering Can', 'img/water-can.jpg');
-// var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
+var pen = new Products('Untensil Pens', 'img/pen.jpg');
+var scissors = new Products('Pizza Scissors', 'img/scissors.jpg');
+var shark = new Products('Shark Sleeping Bag', 'img/shark.jpg');
+var sweep = new Products('Baby Broom Onesie', 'img/sweep.png');
+var unicorn = new Products('Unicorn Meat', 'img/unicorn.jpg');
+var usb = new Products('Tentacle USB', 'img/usb.gif');
+var waterCan = new Products('Watering Can', 'img/water-can.jpg');
+var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
 var imgRandom = function () {
     return Math.floor(Math.random() * productImages.length);
