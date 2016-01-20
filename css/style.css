@@ -8,3 +8,18 @@ img {
 body{
   background-color: #5298fa;
 }
+
+section {
+  margin-left: 4%;
+  margin-right: auto;
+  display: flex;
+}
+
+header, h3 {
+  text-align: center;
+}
+
+button{
+  margin-left: 40%;
+  margin-right: auto;
+}
