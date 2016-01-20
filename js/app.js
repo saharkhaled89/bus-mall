@@ -12,7 +12,6 @@ function Products (productName, filePath) {
 
 Products.prototype.percent = function() {
   return (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
-
 }
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
@@ -123,9 +122,10 @@ var resultsButton = document.getElementById('resultsButton');
 function handleButtonClick(){
     for (var i = 0; i < productImages.length; i++) {
       // having handler send the data to a <section> for now, needed to test the button functionality / test the percent method
-    document.getElementById('showData').innerHTML = productImages[i].percent();
+    document.getElementById('showData').innerHTML += productImages[i].productName + ': out of ' + productImages[i].timesDisplayed + ' displays you clicked ' + productImages[i].clickTotal + ' time(s), which is ' + productImages[i].percent() + '% of the times displayed </br>';
+    // productImages[i].percent();
 
-console.log('this point works');
+console.log('the handler met the listener');
     }
 }
  resultsButton.addEventListener('click', handleButtonClick);
