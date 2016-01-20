@@ -7,15 +7,13 @@ function Products (productName, filePath) {
     this.filePath = filePath;
     this.clickTotal = 0;
     this.timesDisplayed = 0;
-    this.percentClicked= 0;
     productImages.push(this);
-
-    // Products.prototype.percent = function() {
-    //     this.percentClicked((this.clickTotal/this.timesDisplayed).toFixed(2) * 100);
-    // };
-    // Products.percent();
 }
 
+Products.prototype.percent = function() {
+  return (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
+
+}
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
@@ -98,11 +96,9 @@ function handleClickThird(){
         button();
       }
 
-
 imageOne.addEventListener('click', handleClickFirst);
 imageTwo.addEventListener('click', handleClickSecond);
 imageThree.addEventListener('click', handleClickThird);
-
 
 //this function hides the results button until it goes through 5 clicks
 function button() {
@@ -114,11 +110,11 @@ function button() {
 }
 button();
 
-//create an event handler for button
-// function handleButtonClick(){
-//     event.preventDefault();
-//
-// }
-//
-// //create event listener for the button
-// resultsButton.addEventListener('click', handleButtonClick);
+var resultsButton = document.getElementById('resultsButton');
+function handleButtonClick(){
+    for (var i = 0; i < productImages.length; i++) {
+    document.getElementById('showData').innerHTML = productImages[i].percent();
+console.log('this point works');
+    }
+}
+ resultsButton.addEventListener('click', handleButtonClick);
