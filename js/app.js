@@ -1,15 +1,16 @@
 'use strict'
 var productImages = [];
+var globalClicks = 0;
 
 function Products (productName, filePath) {
     this.productName = productName;
     this.filePath = filePath;
     this.clickTotal = 0;
     this.timesDisplayed = 0;
-    // percentClicked = 0;
+    // this.percentClicked;
     // this.findPercentClick = function (){
-    //   ((this.timesClicked/this.timesDisplayed)/ this.TotalClicks);
-    // }
+    //     (this.clickTotal/this.timesDisplayed);
+    // };
     productImages.push(this);
     // this.findPercentClick();
 }
@@ -56,7 +57,6 @@ var imageAppear = function(){
     };
     productImageThree.src = productImages[img3].filePath;
     productImages[img3].timesDisplayed ++;
-
 }
 imageAppear();
 
@@ -70,25 +70,51 @@ var productImageThree = document.getElementById('imageThree');
 
 function handleClickFirst(){
     firstClick += 1;
+    globalClicks += 1;
     console.log('First was clicked ' + firstClick + ' times');
     productImages[img1].clickTotal += 1;
     imageAppear();
+    button();
 }
 
 function handleClickSecond(){
       secondClick += 1;
+      globalClicks += 1;
       console.log('Second was clicked ' + secondClick + ' times');
       productImages[img2].clickTotal += 1;
       imageAppear();
+      button();
     }
 
 function handleClickThird(){
         thirdClick += 1;
+        globalClicks += 1;
         console.log('Third was clicked ' + thirdClick + ' times');
         productImages[img3].clickTotal += 1;
         imageAppear();
+        button();
       }
+
 
 imageOne.addEventListener('click', handleClickFirst);
 imageTwo.addEventListener('click', handleClickSecond);
 imageThree.addEventListener('click', handleClickThird);
+
+
+//this function hides the results button until it goes through 5 clicks
+function button() {
+    if(globalClicks < 5) {
+        document.getElementById('resultsButton').style.visibility = 'hidden';
+    } else {
+        document.getElementById('resultsButton').style.visibility = 'visible';
+    }
+}
+button();
+
+//create an event handler for button
+// function handleButtonClick(){
+//
+// }
+
+//create event listener for the button
+// resultsButton.addEventListener('click', handleButtonClick);

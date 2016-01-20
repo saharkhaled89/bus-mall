@@ -18,3 +18,8 @@ section {
 header, h3 {
   text-align: center;
 }
+
+button{
+  margin-left: 40%;
+  margin-right: auto;
+}
