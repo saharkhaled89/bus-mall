@@ -11,7 +11,6 @@ function Products (productName, filePath) {
     this.percentClick = 0;
     productImages.push(this);
   }
-
 Products.prototype.percent = function() {
   this.percentClick = (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
   console.log('this.percent click works')
@@ -21,7 +20,7 @@ var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
 var boots = new Products('Toe-less Rain Boots', 'img/boots.jpg');
 var chair = new Products('Chair', 'img/chair.jpg');
-var cthulu = new Products('Cthulu Toy', 'img/cthulhu.jpg');
+var cthulu = new Products('Cthulhu Toy', 'img/cthulhu.jpg');
 var dragon = new Products('Dragon Meat', 'img/dragon.jpg');
 var pen = new Products('Untensil Pens', 'img/pen.jpg');
 var scissors = new Products('Pizza Scissors', 'img/scissors.jpg');
@@ -39,7 +38,6 @@ var imgRandom = function () {
 var img1;
 var img2;
 var img3;
-
 //function that makes images appear
 var imageAppear = function(){
     var productImageOne = document.getElementById('imageOne');
@@ -68,30 +66,28 @@ var productImageTwo = document.getElementById('imageTwo');
 var productImageThree = document.getElementById('imageThree');
 
 
-
 function handleClick(image){
         image.clickTotal += 1;
         globalClicks += 1;
         image.percent();
+        hideSection();
         button();
+        thanksText();
         dataSet1();
         imageAppear();
       }
-
 imageOne.addEventListener('click', function(){
-  handleClick(productImages[img1]);
+    handleClick(productImages[img1]);
 });
-
-
 imageTwo.addEventListener('click', function(){
-  handleClick(productImages[img2]);
+    handleClick(productImages[img2]);
 });
 imageThree.addEventListener('click', function(){
-  handleClick(productImages[img3]);
+    handleClick(productImages[img3]);
 });
 
 function button() {
-    if(globalClicks < 5) {
+    if(globalClicks < productImages.length) {
         document.getElementById('resultsButton').style.visibility = 'hidden';
     } else {
         document.getElementById('resultsButton').style.visibility = 'visible';
@@ -99,15 +95,34 @@ function button() {
 }
 button();
 
+var imageSection = document.getElementById('hide');
+function hideSection() {
+    if (globalClicks < productImages.length){
+        document.getElementById('hide').style.visibility = 'visible';
+    } else {
+        document.getElementById('hide').style.visibility = 'hidden';
+    }
+}
+hideSection();
+
+var thankYou = document.getElementById('appear');
+function thanksText(){
+  if (globalClicks < productImages.length){
+    document.getElementById('appear').style.visibility = 'hidden';
+  } else {
+    document.getElementById('appear').style.visibility = 'visible';
+  }
+}
+thanksText();
+
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
     percentChart[i] = productImages[i].percentClick;
   }
 }
-
 function chartOne() {
   var data = {
-    labels : ['bag', 'banana','chair', 'cthulu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
+    labels : ['bag', 'banana', 'boots', 'chair', 'cthulhu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
     datasets : [
         {
         label: 'Percent Chart',
@@ -123,16 +138,9 @@ function chartOne() {
 
 var resultsButton = document.getElementById('resultsButton');
 
+
 function handleButtonClick(){
       chartOne();
-      // for (var i = 0; i < productImages.length; i++) {
-        // data.labels[i] = productImages[i].productName;
-        // data.datasets[0].data[i] = productImages[i].clickTotal;
-      // data.datasets[0].data[i] = productImages[i].timesDisplayed;
-      // // data.datasets[i].data[i] = productImages[i].percent();
-      // }
     console.log('the handler met the listener');
-    // var chartHere = document.getElementById('chartHere').getContext('2d');
-    // new Chart(chartHere).Bar(data);
-}
+  }
  resultsButton.addEventListener('click', handleButtonClick);
