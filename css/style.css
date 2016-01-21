@@ -6,11 +6,11 @@ img {
   }
 
 body{
-  background-color: #5298fa;
+  background-color: #52ef9e;
 }
 
-section {
-  margin-left: 4%;
+canvas {
+  margin-left: auto;
   margin-right: auto;
   display: flex;
 }
