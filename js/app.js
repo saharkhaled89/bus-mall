@@ -98,9 +98,9 @@ button();
 var imageSection = document.getElementById('hide');
 function hideSection() {
     if (globalClicks < productImages.length){
-        document.getElementById('hide').style.visibility = 'visible';
+        document.getElementById('hide').style.display = 'block';
     } else {
-        document.getElementById('hide').style.visibility = 'hidden';
+        document.getElementById('hide').style.display = 'none';
     }
 }
 hideSection();
@@ -108,9 +108,9 @@ hideSection();
 var thankYou = document.getElementById('appear');
 function thanksText(){
   if (globalClicks < productImages.length){
-    document.getElementById('appear').style.visibility = 'hidden';
+    document.getElementById('appear').style.display = 'none';
   } else {
-    document.getElementById('appear').style.visibility = 'visible';
+    document.getElementById('appear').style.display = 'block';
   }
 }
 thanksText();

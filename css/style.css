@@ -1,25 +1,57 @@
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
 img {
-  height: 400px;
-  width: 400px;
+  height: 350px;
+  width: 350px;
   margin: 5px;
   border-radius: 4px;
+  box-shadow: 0 10px 6px -6px black;
   }
 
+#hide {
+  margin-left: 10%;
+  margin-top: 0;
+}
 body{
-  background-color: #52ef9e;
+  background-color: #129797;
+  color: #63f65b;
 }
 
 canvas {
   margin-left: auto;
   margin-right: auto;
   display: flex;
+
 }
 
-header, h3 {
+header, h3, h1 {
   text-align: center;
 }
+header {
+  background-color: #55BCBC;
+  border-radius: 4px;
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+  padding: 30px;
+  font-size: 150%;
+}
 
+h3 {
+  margin-top: 25px;
+  margin-bottom: 2;
+}
 button{
   margin-left: 40%;
   margin-right: auto;
+  margin-top: 0%;
+  background-color: white;
+  border-width: 2px;
+  border-color: blue;
+  text-align: center;
+  padding: 30px;
 }
+
+#buttonText {
+  padding-bottom: 15px;
+  }
