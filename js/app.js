@@ -2,6 +2,14 @@
 var productImages = [];
 var percentChart = [];
 var globalClicks = 0;
+var img1;
+var img2;
+var img3;
+var productImageOne = document.getElementById('imageOne');
+var productImageTwo = document.getElementById('imageTwo');
+var productImageThree = document.getElementById('imageThree');
+var imageSection = document.getElementById('hide');
+var resultsButton = document.getElementById('resultsButton');
 
 function Products (productName, filePath) {
     this.productName = productName;
@@ -12,7 +20,7 @@ function Products (productName, filePath) {
     productImages.push(this);
   }
 Products.prototype.percent = function() {
-  this.percentClick = (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
+  this.percentClick = (this.clickTotal/globalClicks).toFixed(2) * 100;
   console.log('this.percent click works')
 }
 
@@ -31,13 +39,10 @@ var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
+
 var imgRandom = function () {
     return Math.floor(Math.random() * productImages.length);
 }
-
-var img1;
-var img2;
-var img3;
 //function that makes images appear
 var imageAppear = function(){
     var productImageOne = document.getElementById('imageOne');
@@ -60,10 +65,6 @@ var imageAppear = function(){
     productImages[img3].timesDisplayed ++;
 }
 imageAppear();
-
-var productImageOne = document.getElementById('imageOne');
-var productImageTwo = document.getElementById('imageTwo');
-var productImageThree = document.getElementById('imageThree');
 
 
 function handleClick(image){
@@ -95,7 +96,6 @@ function button() {
 }
 button();
 
-var imageSection = document.getElementById('hide');
 function hideSection() {
     if (globalClicks < productImages.length){
         document.getElementById('hide').style.display = 'block';
@@ -135,9 +135,6 @@ function chartOne() {
   var chartHere = document.getElementById('chartHere').getContext('2d');
   var myBarChart = new Chart(chartHere).Bar(data)
 }
-
-var resultsButton = document.getElementById('resultsButton');
-
 
 function handleButtonClick(){
       chartOne();
