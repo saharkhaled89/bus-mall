@@ -99,9 +99,8 @@ imageOne.addEventListener('click', handleClickFirst);
 imageTwo.addEventListener('click', handleClickSecond);
 imageThree.addEventListener('click', handleClickThird);
 
-//this function hides the results button until it goes through 5 clicks
 function button() {
-    if(globalClicks < productImages.length) {
+    if(globalClicks < 5) {
         document.getElementById('resultsButton').style.visibility = 'hidden';
     } else {
         document.getElementById('resultsButton').style.visibility = 'visible';
@@ -112,7 +111,7 @@ button();
 var data = {
   labels : ['bag', 'banana','chair', 'cthulu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
   datasets : [{
-      fillColor : "#48A497",
+      fillColor : "#152874",
 			strokeColor : "#48A4D1",
 			data : [],
       }
@@ -120,7 +119,6 @@ var data = {
 }
 var chartHere = document.getElementById('chartHere').getContext('2d');
 new Chart(chartHere).Bar(data);
-
 //clicksForChart() gets the click info from the image click handlers
 // var chartArray = [];
 // function clicksForChart() {
