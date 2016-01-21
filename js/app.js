@@ -19,10 +19,12 @@ function Products (productName, filePath) {
     this.percentClick = 0;
     productImages.push(this);
   }
-Products.prototype.percent = function() {
-  this.percentClick = (this.clickTotal/globalClicks).toFixed(2) * 100;
-  console.log('this.percent click works')
-}
+
+function percent() {
+    for(var i = 0; i < productImages.length; i++) {
+      productImages[i].percentClick = (productImages[i].clickTotal/productImages[i].timesDisplayed).toFixed(2) * 100;
+   }
+ }
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
@@ -70,8 +72,9 @@ imageAppear();
 function handleClick(image){
         image.clickTotal += 1;
         globalClicks += 1;
-        image.percent();
+        percent();
         hideSection();
+        localStorage.setItem('chartPersist', JSON.stringify(productImages));
         button();
         thanksText();
         dataSet1();
@@ -120,6 +123,14 @@ function dataSet1() {
     percentChart[i] = productImages[i].percentClick;
   }
 }
+
+var chartData = localStorage.getItem('chartPersist');
+if(chartData) {
+  productImages = JSON.parse(chartData);
+} else {
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
+}
+
 function chartOne() {
   var data = {
     labels : ['bag', 'banana', 'boots', 'chair', 'cthulhu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
@@ -141,3 +152,12 @@ function handleButtonClick(){
     console.log('the handler met the listener');
   }
  resultsButton.addEventListener('click', handleButtonClick);
+
+var clearLS = document.getElementById('lsClear');
+
+var handleLSClear = function() {
+  console.log('Clearing Local Storage');
+  localStorage.clear();
+};
+
+clearLS.addEventListener('click', handleLSClear);
