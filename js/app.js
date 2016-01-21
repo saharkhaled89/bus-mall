@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 var productImages = [];
 var percentChart = [];
 var globalClicks = 0;
@@ -11,9 +11,18 @@ function Products (productName, filePath) {
     this.percentClick = 0;
     productImages.push(this);
   }
-Products.prototype.percent = function() {
-  this.percentClick = (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
-  console.log('this.percent click works')
+
+var i;
+
+// Products.prototype.percent = function() {
+//   this.percentClick = (this.clickTotal/this.timesDisplayed).toFixed(2) * 100;
+//   console.log('this.percent click works')
+// }
+
+function percent() {
+  for(var i = 0; i < 3; i++) {
+    productImages[i].percentClick = (productImages[i].clickTotal/productImages[i].timesDisplayed).toFixed(2) * 100;
+  }
 }
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
@@ -66,12 +75,15 @@ var productImageTwo = document.getElementById('imageTwo');
 var productImageThree = document.getElementById('imageThree');
 
 
+// function handleClick(){
+//         productImages.clickTotal += 1;
 function handleClick(image){
         image.clickTotal += 1;
         globalClicks += 1;
-        image.percent();
-        hideSection();
+        localStorage.setItem('chartPersist', JSON.stringify(productImages));
         button();
+        percent();
+        hideSection();
         thanksText();
         dataSet1();
         imageAppear();
@@ -87,7 +99,7 @@ imageThree.addEventListener('click', function(){
 });
 
 function button() {
-    if(globalClicks < productImages.length) {
+    if(globalClicks < 3) {
         document.getElementById('resultsButton').style.visibility = 'hidden';
     } else {
         document.getElementById('resultsButton').style.visibility = 'visible';
@@ -97,7 +109,8 @@ button();
 
 var imageSection = document.getElementById('hide');
 function hideSection() {
-    if (globalClicks < productImages.length){
+    if (globalClicks < 3){
+    // if (globalClicks < 3){
         document.getElementById('hide').style.display = 'block';
     } else {
         document.getElementById('hide').style.display = 'none';
@@ -107,7 +120,7 @@ hideSection();
 
 var thankYou = document.getElementById('appear');
 function thanksText(){
-  if (globalClicks < productImages.length){
+  if (globalClicks < 3){
     document.getElementById('appear').style.display = 'none';
   } else {
     document.getElementById('appear').style.display = 'block';
@@ -116,7 +129,7 @@ function thanksText(){
 thanksText();
 
 function dataSet1() {
-  for (var i = 0; i < productImages.length; i++) {
+  for (var i = 0; i < 3; i++) {
     percentChart[i] = productImages[i].percentClick;
   }
 }
@@ -138,9 +151,27 @@ function chartOne() {
 
 var resultsButton = document.getElementById('resultsButton');
 
+var chartData = localStorage.getItem('chartPersist');
+if(chartData) {
+  productImages = JSON.parse(chartData);
+  console.log('chartData');
+  console.log(productImages);
+} else {
+  console.log('Local Storage empty: Initializing!');
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
+}
 
 function handleButtonClick(){
       chartOne();
     console.log('the handler met the listener');
   }
  resultsButton.addEventListener('click', handleButtonClick);
+
+var clearLS = document.getElementById('lsClear');
+
+var handleLSClear = function() {
+  console.log("clearing Local Storage");
+  localStorage.clear();
+};
+
+clearLS.addEventListener('click', handleLSClear);
