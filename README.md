@@ -13,6 +13,7 @@ Whether the user chooses to view results is also recorded for marketing purposes
 
 READ AUTHORS
 Iris Carrera https://github.com/icarrera
+Lex Myers https://github.com/lexm
 
 Contact Info
 Iris Carrera

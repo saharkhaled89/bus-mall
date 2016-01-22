@@ -22,7 +22,7 @@ function Products (productName, filePath) {
 
 function percent() {
     for(var i = 0; i < productImages.length; i++) {
-      productImages[i].percentClick = (productImages[i].clickTotal/productImages[i].timesDisplayed).toFixed(2) * 100;
+      productImages[i].percentClick = (productImages[i].clickTotal/globalClicks).toFixed(2) * 100;
    }
  }
 
