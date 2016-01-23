@@ -11,6 +11,9 @@ var productImageTwo = document.getElementById('imageTwo');
 var productImageThree = document.getElementById('imageThree');
 var imageSection = document.getElementById('hide');
 var resultsButton = document.getElementById('resultsButton');
+var thankYou = document.getElementById('appear');
+var clearLS = document.getElementById('lsClear');
+var chartData = localStorage.getItem('chartPersist');
 
 function Products (productName, filePath) {
   this.productName = productName;
@@ -19,7 +22,6 @@ function Products (productName, filePath) {
   this.timesDisplayed = 0;
   productImages.push(this);
 }
-
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
 var banana = new Products('Banana Slicer', 'img/banana.jpg');
 var boots = new Products('Toe-less Rain Boots', 'img/boots.jpg');
@@ -58,30 +60,6 @@ var imageAppear = function(){
   productImageThree.src = productImages[img3].filePath;
   productImages[img3].timesDisplayed ++;
 };
-imageAppear();
-
-function handleClick(image){
-  image.clickTotal += 1;
-  globalClicks += 1;
-  hideSection();
-  localStorage.setItem('chartPersist', JSON.stringify(productImages));
-  button();
-  thanksText();
-  dataSet1();
-  dataSet2();
-  imageAppear();
-}
-
-imageOne.addEventListener('click', function(){
-  handleClick(productImages[img1]);
-});
-imageTwo.addEventListener('click', function(){
-  handleClick(productImages[img2]);
-});
-imageThree.addEventListener('click', function(){
-  handleClick(productImages[img3]);
-});
-
 function button() {
   if(globalClicks < productImages.length) {
     document.getElementById('resultsButton').style.visibility = 'hidden';
@@ -89,8 +67,6 @@ function button() {
     document.getElementById('resultsButton').style.visibility = 'visible';
   }
 }
-button();
-
 function hideSection() {
   if (globalClicks < productImages.length){
     document.getElementById('hide').style.display = 'block';
@@ -98,9 +74,6 @@ function hideSection() {
     document.getElementById('hide').style.display = 'none';
   }
 }
-hideSection();
-
-var thankYou = document.getElementById('appear');
 function thanksText(){
   if (globalClicks < productImages.length){
     document.getElementById('appear').style.display = 'none';
@@ -108,8 +81,6 @@ function thanksText(){
     document.getElementById('appear').style.display = 'block';
   }
 }
-thanksText();
-
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
     clickChart[i] = productImages[i].clickTotal;
@@ -119,12 +90,6 @@ function dataSet2() {
   for (var i = 0; i < productImages.length; i++){
     displayedChart[i] = productImages[i].timesDisplayed;
   }
-}
-var chartData = localStorage.getItem('chartPersist');
-if(chartData) {
-  productImages = JSON.parse(chartData);
-} else {
-  localStorage.setItem('chartPersist', JSON.stringify(productImages));
 }
 function chartOne() {
   var data = {
@@ -148,17 +113,43 @@ function chartOne() {
   var myBarChart = new Chart(chartHere).Bar(data);
 }
 
+function handleClick(image){
+  image.clickTotal += 1;
+  globalClicks += 1;
+  hideSection();
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
+  button();
+  thanksText();
+  dataSet1();
+  dataSet2();
+  imageAppear();
+}
+imageOne.addEventListener('click', function(){
+  handleClick(productImages[img1]);
+});
+imageTwo.addEventListener('click', function(){
+  handleClick(productImages[img2]);
+});
+imageThree.addEventListener('click', function(){
+  handleClick(productImages[img3]);
+});
+if(chartData) {
+  productImages = JSON.parse(chartData);
+} else {
+  localStorage.setItem('chartPersist', JSON.stringify(productImages));
+}
 function handleButtonClick(){
   chartOne();
   console.log('the handler met the listener');
 }
 resultsButton.addEventListener('click', handleButtonClick);
-
-var clearLS = document.getElementById('lsClear');
-
 var handleLSClear = function() {
   console.log('Clearing Local Storage');
   localStorage.clear();
 };
-
 clearLS.addEventListener('click', handleLSClear);
+
+imageAppear();
+button();
+hideSection();
+thanksText();
