@@ -13,15 +13,21 @@ img {
   margin-top: 0;
 }
 body{
-  background-color: #129797;
-  color: #63f65b;
+  background-color: #b4f3ed;
+  color: #1f5610;
+}
+h2 {
+  font-family: 'Yellowtail';
+  font-style: oblique;
+  font-weight: bold;
+  color: #090939;
 }
 canvas {
   margin-left: auto;
   margin-right: auto;
   display: flex;
 }
-header, h3, h1 {
+header, h3, h1, h2 {
   text-align: center;
 }
 header {
@@ -35,15 +41,19 @@ h3 {
   margin-top: 25px;
   margin-bottom: 2;
 }
-button{
+h1 {
+  margin-top: 30px;
+}
+button {
   margin-left: 40%;
   margin-right: auto;
   margin-top: 0%;
+  margin-bottom: 3px;
   background-color: white;
   border-width: 2px;
   border-color: blue;
   text-align: center;
-  padding: 30px;
+  padding: 25px;
 }
 #buttonText {
   padding-bottom: 15px;
