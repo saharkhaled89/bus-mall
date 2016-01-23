@@ -9,19 +9,25 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Yellowtail' rel='stylesheet' type='text/css'>
     <script src="js/chart.js"></script>
-    </head>
-    <body>
-<header><h2>BusMall USA</h2> <h4>Product Survey<h4></header>
-<section id="appear"><h1>Got it, thanks!</h1></section>
-<section id="hide">
-  <h3>Instructions: Vote for your favorite product with a click!</h3>
-  <img src="" alt="" id="imageOne">
-  <img src="" alt="" id="imageTwo">
-  <img src="" alt="" id="imageThree">
-</section>
-  <button id="resultsButton" type="button"><p id="buttonText">Click here for Results</button>
-  <button id="lsClear" type="button">Clear LS</button>
-  <canvas id="chartHere" width="500" height="500"></canvas>
-    <script src="js/app.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <header><h2>BusMall USA</h2> <h4>Product Survey<h4></header>
+    <section id="appear">
+      <h1>Got it, thanks!</h1>
+    </section>
+   <section id="hide">
+       <h3>Instructions: Vote for your favorite product with a click!</h3>
+       <img src="" alt="" id="imageOne">
+       <img src="" alt="" id="imageTwo">
+       <img src="" alt="" id="imageThree">
+   </section>
+   <button id="resultsButton" type="button"><p id="buttonText">View Results</button>
+   <section id="legend">
+      <h6>Times Product Displayed = <b id="yellow">Yellow Bars</b></h6>
+      <h6>Total Votes = <b id="blue">Blue Bars</b></h6>
+   </section>
+   <canvas id="chartHere" width="500" height="500"></canvas>
+   <button id="lsClear" type="button">Clear LS</button>
+   <script src="js/app.js" type="text/javascript"></script>
   </body>
 </html>

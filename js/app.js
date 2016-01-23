@@ -81,6 +81,13 @@ function thanksText(){
     document.getElementById('appear').style.display = 'block';
   }
 }
+  function legendText(){
+    if (globalClicks < productImages.length){
+      document.getElementById('legend').style.display = 'none';
+    } else {
+      document.getElementById('legend').style.display = 'block';
+    }
+}
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
     clickChart[i] = productImages[i].clickTotal;
@@ -123,16 +130,8 @@ function handleClick(image){
   dataSet1();
   dataSet2();
   imageAppear();
+  legendText();
 }
-imageOne.addEventListener('click', function(){
-  handleClick(productImages[img1]);
-});
-imageTwo.addEventListener('click', function(){
-  handleClick(productImages[img2]);
-});
-imageThree.addEventListener('click', function(){
-  handleClick(productImages[img3]);
-});
 if(chartData) {
   productImages = JSON.parse(chartData);
 } else {
@@ -142,14 +141,25 @@ function handleButtonClick(){
   chartOne();
   console.log('the handler met the listener');
 }
-resultsButton.addEventListener('click', handleButtonClick);
 var handleLSClear = function() {
   console.log('Clearing Local Storage');
   localStorage.clear();
 };
+
+imageOne.addEventListener('click', function(){
+  handleClick(productImages[img1]);
+});
+imageTwo.addEventListener('click', function(){
+  handleClick(productImages[img2]);
+});
+imageThree.addEventListener('click', function(){
+  handleClick(productImages[img3]);
+});
+resultsButton.addEventListener('click', handleButtonClick);
 clearLS.addEventListener('click', handleLSClear);
 
 imageAppear();
 button();
 hideSection();
 thanksText();
+legendText();
