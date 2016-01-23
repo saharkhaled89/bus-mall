@@ -1,6 +1,7 @@
 'use strict';
 var productImages = [];
-var percentChart = [];
+var clickChart = [];
+var displayedChart = [];
 var globalClicks = 0;
 var img1;
 var img2;
@@ -16,14 +17,7 @@ function Products (productName, filePath) {
   this.filePath = filePath;
   this.clickTotal = 0;
   this.timesDisplayed = 0;
-  this.percentClick = 0;
   productImages.push(this);
-}
-
-function percent() {
-  for(var i = 0; i < productImages.length; i++) {
-    productImages[i].percentClick = (productImages[i].clickTotal/globalClicks).toFixed(2) * 100;
-  }
 }
 
 var bag = new Products('Star Wars Luggage', 'img/bag.jpg');
@@ -41,11 +35,9 @@ var usb = new Products('Tentacle USB', 'img/usb.gif');
 var waterCan = new Products('Watering Can', 'img/water-can.jpg');
 var wineGlass = new Products('Wine Glass', 'img/wine-glass.jpg');
 
-
 var imgRandom = function () {
   return Math.floor(Math.random() * productImages.length);
 };
-//function that makes images appear
 var imageAppear = function(){
   var productImageOne = document.getElementById('imageOne');
   var productImageTwo = document.getElementById('imageTwo');
@@ -68,16 +60,15 @@ var imageAppear = function(){
 };
 imageAppear();
 
-
 function handleClick(image){
   image.clickTotal += 1;
   globalClicks += 1;
-  percent();
   hideSection();
   localStorage.setItem('chartPersist', JSON.stringify(productImages));
   button();
   thanksText();
   dataSet1();
+  dataSet2();
   imageAppear();
 }
 
@@ -121,26 +112,35 @@ thanksText();
 
 function dataSet1() {
   for (var i = 0; i < productImages.length; i++) {
-    percentChart[i] = productImages[i].percentClick;
+    clickChart[i] = productImages[i].clickTotal;
   }
 }
-
+function dataSet2() {
+  for (var i = 0; i < productImages.length; i++){
+    displayedChart[i] = productImages[i].timesDisplayed;
+  }
+}
 var chartData = localStorage.getItem('chartPersist');
 if(chartData) {
   productImages = JSON.parse(chartData);
 } else {
   localStorage.setItem('chartPersist', JSON.stringify(productImages));
 }
-
 function chartOne() {
   var data = {
     labels : ['bag', 'banana', 'boots', 'chair', 'cthulhu', 'dragon', 'pen', 'scissors', 'shark', 'sweep', 'unicorn', 'usb', 'water can', 'wine glass'],
     datasets : [
       {
-        label: 'Percent Chart',
+        label: 'Product Selection Chart',
         fillColor : '#152874',
         strokeColor : '#48A4D1',
-        data : percentChart
+        data : clickChart
+      },
+      {
+        label: 'All Appearances',
+        fillColor : '#cbb910',
+        strokeColor : '#48A4D1',
+        data : displayedChart
       }
     ]
   };
