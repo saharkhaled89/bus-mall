@@ -8,43 +8,63 @@ img {
   border-radius: 4px;
   box-shadow: 0 10px 6px -6px black;
   }
-#hide {
-  margin-left: 10%;
-  margin-top: 0;
-}
 body{
-  background-color: #129797;
-  color: #63f65b;
+  background-color: #b4f3ed;
+  color: #1f5610;
+}
+h2 {
+  font-family: 'Yellowtail';
+  font-style: oblique;
+  font-weight: bold;
+  color: #090939;
 }
 canvas {
   margin-left: auto;
   margin-right: auto;
   display: flex;
 }
-header, h3, h1 {
+header, h3, h1, h2 {
   text-align: center;
 }
 header {
   background-color: #55BCBC;
   border-radius: 4px;
   box-shadow:0 0 20px rgba(0,0,0,0.8);
-  padding: 30px;
+  padding: 10px;
   font-size: 150%;
 }
 h3 {
   margin-top: 25px;
   margin-bottom: 2;
 }
-button{
-  margin-left: 40%;
+h1 {
+  margin-top: 30px;
+}
+button {
+  margin-left: 44%;
   margin-right: auto;
   margin-top: 0%;
+  margin-bottom: 3px;
   background-color: white;
   border-width: 2px;
   border-color: blue;
   text-align: center;
-  padding: 30px;
+  padding: 25px;
 }
 #buttonText {
   padding-bottom: 15px;
   }
+#hide {
+  margin-left: 10%;
+  margin-top: 0;
+}
+#legend {
+  margin-top: 20px;
+  text-align: center;
+}
+#yellow {
+  color: #cbb910;
+}
+#blue {
+  color: #152874;
+}
